@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
         // erase screen
         erase();
 
-	printw( "\n\n\n\n\n\n\n\t\t\t\t\t\tWinner: %s!\n", argv[1]);
+	printw( "\n\n\n\n\n\n\n\t\t\t\tWinner: %s!\n", argv[1]);
 
         // update all particles
         particle_update(p, 0.01, size);
