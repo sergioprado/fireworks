@@ -31,9 +31,14 @@ void ncurses_init() {
     init_pair(7, 1, 0);         // Red on black
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     struct timespec interval = { .tv_sec = 0, .tv_nsec = 25000000 };
     size_t size = 200;
+
+    if (argc < 2) {
+        printf("Please provide name!\n");
+	exit(1);
+    }
 
     ncurses_init();
     srand((unsigned) time(NULL));
@@ -69,6 +74,8 @@ int main() {
         // erase screen
         erase();
 
+	printw( "\n\n\n\n\n\n\n\t\t\t\t\t\tWinner: %s!\n", argv[1]);
+
         // update all particles
         particle_update(p, 0.01, size);
         particle_update(q, 0.01, size);
@@ -80,6 +87,7 @@ int main() {
         particle_draw(q, size);
         particle_draw(r, size);
         particle_draw(s, size);
+
 
         // draw particles to screen
         refresh();
